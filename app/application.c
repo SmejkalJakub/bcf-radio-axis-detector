@@ -1,9 +1,11 @@
 #include <application.h>
 
-#define RADIO_DELAY 10000
-
+#define RADIO_DELAY (10 * 1000)
 #define BATTERY_UPDATE_INTERVAL (60 * 60 * 1000)
 
+#ifndef AXIS_DETECTION
+    #define AXIS_DETECTION 'X'
+#endif
 
 // LED instance
 bc_led_t led;
@@ -42,7 +44,7 @@ void lis2_event_handler(bc_lis2dh12_t *self, bc_lis2dh12_event_t event, void *ev
 }
 
 void button_event_handler(bc_button_t *self, bc_button_event_t event, void *event_param)
-{ 
+{
     if (event == BC_BUTTON_EVENT_PRESS)
     {
         bc_led_set_mode(&led, BC_LED_MODE_ON);
@@ -79,7 +81,6 @@ void application_init(void)
     bc_button_init(&button, BC_GPIO_BUTTON, BC_GPIO_PULL_DOWN, 0);
     bc_button_set_event_handler(&button, button_event_handler, NULL);
 
-
     // Initialize battery
     bc_module_battery_init();
     bc_module_battery_set_event_handler(battery_event_handler, NULL);
@@ -92,18 +93,13 @@ void application_init(void)
     bc_lis2dh12_set_event_handler(&acc, lis2_event_handler, NULL);
     memset(&alarm, 0, sizeof(alarm));
 
-
-    #ifdef X_DETECTOR
+    #if AXIS_DETECTION == 'X'
         bc_radio_pairing_request("x-axis-detector", VERSION);
         alarm.x_high = true;
-    #endif
-
-    #ifdef Y_DETECTOR
+    #elif AXIS_DETECTION == 'Y'
         bc_radio_pairing_request("y-axis-detector", VERSION);
         alarm.y_high = true;
-    #endif
-
-    #ifdef Z_DETECTOR
+    #elif AXIS_DETECTION == 'Z'
         bc_radio_pairing_request("z-axis-detector", VERSION);
         alarm.z_high = true;
     #endif

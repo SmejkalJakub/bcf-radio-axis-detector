@@ -7,7 +7,9 @@ addons:
     packages:
       - gcc-arm-embedded
 script:
-  - make release OUT=bcf-skeleton-${TRAVIS_TAG} VERSION=${TRAVIS_TAG}
+  - make release OUT=bcf-radio-x-axis-detector-${TRAVIS_TAG} VERSION=${TRAVIS_TAG} AXIS_DETECTION=X
+  - make release OUT=bcf-radio-y-axis-detector-${TRAVIS_TAG} VERSION=${TRAVIS_TAG} AXIS_DETECTION=Y
+  - make release OUT=bcf-radio-z-axis-detector-${TRAVIS_TAG} VERSION=${TRAVIS_TAG} AXIS_DETECTION=Z
 deploy:
   skip_cleanup: true
   file_glob: true

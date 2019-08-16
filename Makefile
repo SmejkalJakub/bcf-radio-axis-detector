@@ -1,7 +1,8 @@
 SDK_DIR ?= sdk
 VERSION ?= vdev
 
-CFLAGS += -D'VERSION="${VERSION}"' -DX_DETECTOR
+CFLAGS += -D'VERSION="${VERSION}"'
+CFLAGS += -D"AXIS_DETECTION='${AXIS_DETECTION}'"
 
 -include sdk/Makefile.mk
 
