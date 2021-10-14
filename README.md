@@ -2,7 +2,7 @@
 
 # Detection of movement with accelerometer
 
-[![Travis](https://img.shields.io/travis/bigclownprojects/bcf-radio-move-detector/master.svg)](https://travis-ci.org/bigclownprojects/bcf-radio-move-detector)
+[![build](https://github.com/hardwario/twr-radio-move-detector/actions/workflows/main.yml/badge.svg)](https://github.com/hardwario/twr-radio-move-detector/actions/workflows/main.yml)
 [![Release](https://img.shields.io/github/release/bigclownprojects/bcf-radio-move-detector.svg)](https://github.com/bigclownprojects/bcf-radio-move-detector/releases)
 [![License](https://img.shields.io/github/license/bigclownprojects/bcf-radio-move-detector.svg)](https://github.com/bigclownprojects/bcf-radio-move-detector/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/follow/hardwario_en.svg?style=social&label=Follow)](https://twitter.com/hardwario_en)
