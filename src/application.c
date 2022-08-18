@@ -94,13 +94,13 @@ void application_init(void)
     memset(&alarm, 0, sizeof(alarm));
 
     #if AXIS_DETECTION == 'X'
-        twr_radio_pairing_request("x-axis-detector", VERSION);
+        twr_radio_pairing_request("x-axis-detector", FW_VERSION);
         alarm.x_high = true;
     #elif AXIS_DETECTION == 'Y'
-        twr_radio_pairing_request("y-axis-detector", VERSION);
+        twr_radio_pairing_request("y-axis-detector", FW_VERSION);
         alarm.y_high = true;
     #elif AXIS_DETECTION == 'Z'
-        twr_radio_pairing_request("z-axis-detector", VERSION);
+        twr_radio_pairing_request("z-axis-detector", FW_VERSION);
         alarm.z_high = true;
     #endif
 
