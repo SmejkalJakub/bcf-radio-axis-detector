@@ -6,7 +6,7 @@ project(firmware LANGUAGES C ASM)
 add_subdirectory(sdk)
 
 if(DEFINED AXIS_DETECTION)
-    target_compile_definitions(${CMAKE_PROJECT_NAME} PUBLIC AXIS_DETECTION=${AXIS_DETECTION})
+    target_compile_definitions(${CMAKE_PROJECT_NAME} PUBLIC AXIS_DETECTION='${AXIS_DETECTION}')
 endif()
 
 # If you need to add some source files to the project add them to the "src" folder and update CMakeLists there

@@ -73,7 +73,6 @@ void battery_event_handler(twr_module_battery_event_t event, void *event_param)
 
 void application_init(void)
 {
-
     // Initialize LED
     twr_led_init(&led, TWR_GPIO_LED, false, false);
     twr_led_pulse(&led, 2000);
@@ -92,6 +91,9 @@ void application_init(void)
     twr_lis2dh12_init(&acc, TWR_I2C_I2C0, 0x19);
     twr_lis2dh12_set_event_handler(&acc, lis2_event_handler, NULL);
     memset(&alarm, 0, sizeof(alarm));
+
+    twr_log_init(TWR_LOG_LEVEL_DUMP, TWR_LOG_TIMESTAMP_ABS);
+    twr_log_debug("%c", AXIS_DETECTION);
 
     #if AXIS_DETECTION == 'X'
         twr_radio_pairing_request("x-axis-detector", FW_VERSION);
