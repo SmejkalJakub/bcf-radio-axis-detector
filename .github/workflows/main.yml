@@ -40,11 +40,11 @@ jobs:
 
        cmake -B ${{github.workspace}}/obj/${{env.BUILD_TYPE}} . -G Ninja -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/sdk/toolchain/toolchain.cmake -DTYPE=${{env.BUILD_TYPE}} -DAXIS_DETECTION=Y
        ninja -C ${{github.workspace}}/obj/${{env.BUILD_TYPE}}
-       mv ${{github.workspace}}/out/release/firmware.bin ${{env.REPOSITORY_NAME}}-x-axis-${{env.FW_VERSION}}.bin
+       mv ${{github.workspace}}/out/release/firmware.bin ${{env.REPOSITORY_NAME}}-y-axis-${{env.FW_VERSION}}.bin
 
        cmake -B ${{github.workspace}}/obj/${{env.BUILD_TYPE}} . -G Ninja -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/sdk/toolchain/toolchain.cmake -DTYPE=${{env.BUILD_TYPE}} -DAXIS_DETECTION=Z
        ninja -C ${{github.workspace}}/obj/${{env.BUILD_TYPE}}
-       mv ${{github.workspace}}/out/release/firmware.bin ${{env.REPOSITORY_NAME}}-x-axis-${{env.FW_VERSION}}.bin
+       mv ${{github.workspace}}/out/release/firmware.bin ${{env.REPOSITORY_NAME}}-z-axis-${{env.FW_VERSION}}.bin
 
        ls .
 
@@ -55,7 +55,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         files: |
-          ${{ env.REPORSIORY }}-rgbw144-${{ env.FW_VERSION }}.bin
-          ${{ env.REPORSIORY }}-rgbw72-${{ env.FW_VERSION }}.bin
-          ${{ env.REPORSIORY }}-rgbw36-${{ env.FW_VERSION }}.bin
-          ${{ env.REPORSIORY }}-rgb150-${{ env.FW_VERSION }}.bin
+          ${{ env.REPORSIORY }}-x-axis-${{ env.FW_VERSION }}.bin
+          ${{ env.REPORSIORY }}-y-axis-${{ env.FW_VERSION }}.bin
+          ${{ env.REPORSIORY }}-z-axis-${{ env.FW_VERSION }}.bin
+
